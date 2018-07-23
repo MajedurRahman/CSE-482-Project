@@ -1,4 +1,4 @@
-# CSE-482-Project
+# CSE-482-Project Group 10
 
 
 # For Documentation 

@@ -1,15 +1,31 @@
-function setProductList(itemData) {
+function setProductList(itemData, page) {
     return new Promise(function (res, rej) {
-        $("#productItemDiv").append(ProductDiv(itemData));
-        $(".buyButton").click(function (e) {
-            console.log(this.name);
-            $("#modelBuySell").modal()
-        });
 
-        $(".sellButton").click(function (e) {
-            console.log(this.name);
-            $("#modelBuySell").modal()
-        });
+        if (page === pager_all_product) {
+            $("#productItemDiv").append(ProductHistoryDiv(itemData));
+
+        } else {
+            $("#productItemDiv").append(ProductDiv(itemData));
+            $(".buyButton").click(function (e) {
+                console.log(this.name);
+                $("#modelBuySell").modal();
+                $("#BuyCellButton").text("Buy Product")
+            });
+            $(".sellButton").click(function (e) {
+                console.log(this.name);
+                $("#modelBuySell").modal();
+                $("#BuyCellButton").text("Sell Product")
+
+            });
+
+            $("#BuyCellButton").click(function () {
+                $('#modelBuySell').modal('toggle');
+
+            })
+
+
+        }
+
 
         res(true)
     })
@@ -22,7 +38,7 @@ function setProductList(itemData) {
  * @return {string}
  */
 function ProductDiv(itemData) {
-    console.log("Addedd Item ", itemData)
+    console.log("Addedd Item ", itemData);
     if (itemData != null && itemData !== undefined) {
         let itemProduct = '   <div class="col-lg-3 col-md-6 mb-4" id="productItem' + itemData.productId + '">\n' +
             '\n' +
@@ -63,7 +79,48 @@ function ProductDiv(itemData) {
             '                    </div>\n' +
             '\n' +
             '\n' +
-            '                </div>'
+            '                </div>';
+
+
+        return itemProduct
+    }
+}
+
+/**
+ * @return {string}
+ */
+function ProductHistoryDiv(itemData) {
+    console.log("Addedd Item ", itemData);
+    if (itemData != null && itemData !== undefined) {
+        let itemProduct = '   <div class="col-lg-3 col-md-6 mb-4" id="productItem' + itemData.productId + '">\n' +
+            '\n' +
+            '                    <div class="card">\n' +
+            '                        <div class="view overlay flex-center flex-column">\n' +
+            '                            <img style="height: 200px; width: 180px"\n' +
+            '                                 src="' + itemData.productImgUrl + '"\n' +
+            '                                 class="card-img-top " alt="" id="productItemImage">\n' +
+            '                            <a>\n' +
+            '                                <div class="mask rgba-white-slight"></div>\n' +
+            '                            </a>\n' +
+            '                        </div>\n' +
+            '\n' +
+            '                        <div class="card-body text-center">\n' +
+            '                            <a href="" class="grey-text">\n' +
+            '                                <h5 id="productItemCategory">' + itemData.productCategory + '</h5>\n' +
+            '                            </a>\n' +
+            '                            <h5>\n' +
+            '                                <strong>\n' +
+            '                                    <a href="" class="dark-grey-text" id="productItemName">' + itemData.productName +
+            '                                        <span class="badge badge-pill danger-color" id="productItemAvailable"> ' + itemData.productAvailable + '</span>\n' +
+            '                                    </a>\n' +
+            '                                </strong>\n' +
+            '                            </h5>\n' +
+            '                            <h4 class="font-weight-bold blue-text">\n' +
+            '                                <strong id="productItemPrice">' + itemData.productPrice + ' BDT</strong>\n' +
+            '                            </h4>\n' +
+            '                        </div>\n' +
+            '                    </div>\n' +
+            '                </div>';
 
 
         return itemProduct
@@ -121,7 +178,14 @@ function getProductList() {
                 productList.push(productItem1);
                 productList.push(productItem2);
                 productList.push(productItem3);
-
+                productList.push(productItem);
+                productList.push(productItem1);
+                productList.push(productItem2);
+                productList.push(productItem3);
+                productList.push(productItem);
+                productList.push(productItem1);
+                productList.push(productItem2);
+                productList.push(productItem3);
                 resolve(productList)
             }, 1000)
         } catch (e) {
