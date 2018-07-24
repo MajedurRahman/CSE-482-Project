@@ -1,0 +1,31 @@
+{
+    margin: 0;
+    padding: 0;
+}
+.main{
+    width: 1000px;
+    height: auto;
+    background-color: gray;
+    min-height: 500px;
+    margin : 0 auto;
+}
+.container{
+    width: 1000px;
+    height:auto;
+    min-height:500px;
+    margin: 0 auto;
+}
+.topbar{
+    width:1000px;
+    height:4px;
+    background-color:coral;
+}
+.social_icon{
+    width:1000px;
+    height: 35px;
+    background-color: aqua;
+}
+.icon{
+    width:150px;
+    height:35px;
+}
